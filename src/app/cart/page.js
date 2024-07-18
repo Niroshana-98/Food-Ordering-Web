@@ -66,9 +66,9 @@ export default function CartPage() {
     });
 
     await toast.promise(promise, {
-      loading: 'Preparing your order...',
-      success: 'Redirecting to payment...',
-      error: 'Something went wrong... Please try again later',
+      loading: 'Preparing Your Order...',
+      success: 'Redirecting To Payment...',
+      error: 'Something Went Wrong... Please Try Again Later',
     })
   }
 
@@ -76,7 +76,7 @@ export default function CartPage() {
     return (
       <section className="mt-8 text-center">
         <SectionHeaders mainHeader="Cart" />
-        <p className="mt-4">Your shopping cart is empty 😔</p>
+        <p className="text-white mt-4">Your shopping cart is empty 😔</p>
       </section>
     );
   }
@@ -87,9 +87,9 @@ export default function CartPage() {
         <SectionHeaders mainHeader="Cart" />
       </div>
       <div className="mt-8 grid gap-8 grid-cols-2">
-        <div>
+        <div className="text-white">
           {cartProducts?.length === 0 && (
-            <div>No products in your shopping cart</div>
+            <div className="text-white">No products in your shopping cart</div>
           )}
           {cartProducts?.length > 0 && cartProducts.map((product, index) => (
             <CartProduct
@@ -99,26 +99,26 @@ export default function CartPage() {
             />
           ))}
           <div className="py-2 pr-16 flex justify-end items-center">
-            <div className="text-gray-500">
+            <div className="text-gray-200 text-left">
               Subtotal:<br />
               Delivery:<br />
               Total:
             </div>
             <div className="font-semibold pl-2 text-right">
-              ${subtotal}<br />
-              $5<br />
-              ${subtotal + 5}
+              LKR {subtotal}.00<br />
+              LKR &nbsp;200.00<br />
+              LKR {subtotal + 200}.00
             </div>
           </div>
         </div>
-        <div className="bg-gray-100 p-4 rounded-lg">
-          <h2>Checkout</h2>
+        <div className="bg-secondary p-4 rounded-lg">
+          <h2 className="text-primary font-bold">Checkout</h2>
           <form onSubmit={proceedToCheckout}>
             <AddressInputs
               addressProps={address}
               setAddressProp={handleAddressChange}
             />
-            <button type="submit">Pay ${subtotal+5}</button>
+            <button type="submit">Pay LKR {subtotal+200}.00</button>
           </form>
         </div>
       </div>
