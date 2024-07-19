@@ -16,7 +16,7 @@ export async function POST(req){
         userEmail,
         ...address,
         cartProducts,
-        paid:false,
+        paid:true,
     });
 
     const stripeLineItems = [];
