@@ -71,7 +71,7 @@ export default function Header(){
               <Link className="text-white hover:text-primary"href={'/menu'}>Menu</Link>
               <Link className="text-white hover:text-primary"href={'/#about'}>About</Link>
               <Link className="text-white hover:text-primary"href={'/#contact'}>Contact</Link>
-              <AuthLinks status={status} userName={userName}/>
+              <AuthLinks className="text-white hover:text-primary" status={status} userName={userName}/>
             </div>
           )}
           
