@@ -2,18 +2,13 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loginInProgress, setLoginInProgress] = useState(false);
-  const [isClient, setIsClient] = useState(false);
   const router = useRouter();
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
 
   async function handleFormSubmit(ev) {
     ev.preventDefault();
@@ -34,10 +29,6 @@ export default function LoginPage() {
     }
 
     setLoginInProgress(false);
-  }
-
-  if (!isClient) {
-    return null; // Render nothing on the server side
   }
 
   return (
