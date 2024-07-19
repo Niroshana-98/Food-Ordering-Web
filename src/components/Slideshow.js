@@ -12,7 +12,7 @@ const Slideshow = ({ images }) => {
   }, [images.length]);
 
   return (
-    <div className="relative">
+    <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px] overflow-hidden">
       {images.map((image, index) => (
         <img
           key={index}
