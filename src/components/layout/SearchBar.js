@@ -1,9 +1,9 @@
 import React from "react";
-import Search from "@/components/icons/Search"; // Replace with actual path to your Search icon component
+import Search from "@/components/icons/Search"; 
 
 const SearchBar = ({ searchTerm, onChange }) => {
     return (
-        <div className="max-w-md mx-auto mb-4">
+        <div className="w-full max-w-md mx-auto mb-4 px-4">
             <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <Search className="text-black" />
