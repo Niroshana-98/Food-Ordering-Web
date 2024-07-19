@@ -34,7 +34,7 @@ export default function RegisterPage(){
                 Register
             </h1>
             {userCreated && (
-                <div className="my-4 text-center">
+                <div className="my-4 text-center text-white">
                     User created.<br/> Now you can &nbsp;{''} 
                     <Link className="underline" href="/login">
                         login &raquo;
@@ -42,7 +42,7 @@ export default function RegisterPage(){
                 </div>
             )}
             {error &&(
-                <div className="my-4 text-center">
+                <div className="my-4 text-center text-white">
                     An error has occurred.<br/>
                     Please try again later
                 </div>

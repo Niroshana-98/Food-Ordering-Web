@@ -24,21 +24,34 @@ export const authOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        const email = credentials?.email;
-        const password = credentials?.password;
+        const { email, password } = credentials;
 
-        mongoose.connect(process.env.MONGO_URL);
-        const user = await User.findOne({email});
-        const passwordOk = user && bcrypt.compareSync(password, user.password);
-
-        if (passwordOk) {
-          return user;
+        if (!mongoose.connections[0].readyState) {
+          await mongoose.connect(process.env.MONGO_URL, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+          });
         }
-
-        return null
+        const user = await User.findOne({ email });
+        if (user && bcrypt.compareSync(password, user.password)) {
+          return user;
+        } else {
+          return null;
+        }
       }
     })
   ],
+  pages: {
+    signIn: '/auth/signin',
+    error: '/auth/error', // Error code passed in query string as ?error=
+  },
+  callbacks: {
+    async session({ session, user }) {
+      // Attach the user id to the session
+      session.user.id = user.id;
+      return session;
+    },
+  },
 };
 
 export async function isAdmin() {
