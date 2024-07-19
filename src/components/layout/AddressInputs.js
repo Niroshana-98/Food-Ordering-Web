@@ -11,6 +11,7 @@ export default function AddressInputs({addressProps, setAddressProp,disabled=fal
                 placeholder="Phone Number"
                 value={phone || ''} onChange={ev => setAddressProp('phone',ev.target.value)}
                 className="hover:bg-gray-300"
+                required
             />
 
             <label className="text-white">
@@ -23,9 +24,24 @@ export default function AddressInputs({addressProps, setAddressProp,disabled=fal
                 value={streetAddress || ''} 
                 onChange={ev => setAddressProp('streetAddress',ev.target.value)}
                 className="hover:bg-gray-300"
+                required
             />
 
             <div className="grid grid-cols-2 gap-2 mb-2">
+                <div>
+                    <label className="text-white">
+                        City
+                    </label>
+                    <input
+                        disabled={disabled}
+                        type="text" 
+                        placeholder="City"
+                        value={city || ''} 
+                        onChange={ev => setAddressProp('city',ev.target.value)}
+                        className="hover:bg-gray-300"
+                        required
+                    />
+                </div>   
                 <div>
                     <label className="text-white">
                         Zip Code
@@ -39,19 +55,7 @@ export default function AddressInputs({addressProps, setAddressProp,disabled=fal
                         className="hover:bg-gray-300"
                     />
                 </div>
-                <div>
-                    <label className="text-white">
-                        City
-                    </label>
-                    <input
-                        disabled={disabled}
-                        type="text" 
-                        placeholder="City"
-                        value={city || ''} 
-                        onChange={ev => setAddressProp('city',ev.target.value)}
-                        className="hover:bg-gray-300"
-                    />
-                </div>    
+                 
             </div> 
             <label className="text-white">
                 District
