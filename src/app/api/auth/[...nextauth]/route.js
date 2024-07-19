@@ -1,12 +1,12 @@
 import clientPromise from "@/libs/mongoConnect";
-import { UserInfo } from "@/models/UserInfo";
+import {UserInfo} from "@/models/UserInfo";
 import bcrypt from "bcrypt";
 import * as mongoose from "mongoose";
-import { User } from '@/models/User';
-import NextAuth, { getServerSession } from "next-auth";
+import {User} from '@/models/User';
+import NextAuth, {getServerSession} from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
-import { MongoDBAdapter } from "@auth/mongodb-adapter";
+import { MongoDBAdapter } from "@auth/mongodb-adapter"
 
 export const authOptions = {
   secret: process.env.SECRET,
@@ -26,30 +26,16 @@ export const authOptions = {
       async authorize(credentials, req) {
         const { email, password } = credentials;
 
-        try {
-          if (!mongoose.connections[0].readyState) {
-            await mongoose.connect(process.env.MONGO_URL, {
-              useNewUrlParser: true,
-              useUnifiedTopology: true,
-            });
-          }
-
-          const user = await User.findOne({ email });
-
-          if (!user) {
-            console.log("No user found with this email");
-            return null;
-          }
-
-          const passwordOk = await bcrypt.compare(password, user.password);
-          if (!passwordOk) {
-            console.log("Password does not match");
-            return null;
-          }
-
+        if (!mongoose.connections[0].readyState) {
+          await mongoose.connect(process.env.MONGO_URL, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+          });
+        }
+        const user = await User.findOne({ email });
+        if (user && bcrypt.compareSync(password, user.password)) {
           return user;
-        } catch (error) {
-          console.error("Error during authorization:", error);
+        } else {
           return null;
         }
       }
@@ -61,11 +47,13 @@ export const authOptions = {
   },
   callbacks: {
     async session({ session, user }) {
+      // Attach the user id to the session
       session.user.id = user.id;
       return session;
     },
   },
 };
+
 
 export async function isAdmin() {
   const session = await getServerSession(authOptions);
@@ -73,7 +61,7 @@ export async function isAdmin() {
   if (!userEmail) {
     return false;
   }
-  const userInfo = await UserInfo.findOne({ email: userEmail });
+  const userInfo = await UserInfo.findOne({email:userEmail});
   if (!userInfo) {
     return false;
   }
@@ -82,4 +70,4 @@ export async function isAdmin() {
 
 const handler = NextAuth(authOptions);
 
-export { handler as GET, handler as POST };
+export { handler as GET, handler as POST }
