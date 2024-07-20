@@ -12,6 +12,8 @@ export default function AddressInputs({addressProps, setAddressProp,disabled=fal
                 value={phone || ''} onChange={ev => setAddressProp('phone',ev.target.value)}
                 className="hover:bg-gray-300"
                 required
+                pattern="[0-9]*"
+                inputMode="numeric"
             />
 
             <label className="text-white">

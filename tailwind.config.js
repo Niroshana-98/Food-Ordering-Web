@@ -9,9 +9,19 @@ module.exports = {
     extend: {
       colors: {
         primary: '#ff8500',
-        secondary:'#1c1c1c',
-        log:'#ff0000',
-        redB:'#f44336',
+        secondary: '#1c1c1c',
+        log: '#ff0000',
+        redB: '#f44336',
+      },
+      animation: {
+        shine: 'shine 5s infinite',
+      },
+      keyframes: {
+        shine: {
+          '0%': { transform: 'translateX(-100%)' },
+          '50%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
       },
     },
   },
