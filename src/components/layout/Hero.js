@@ -23,7 +23,7 @@ const images = [
 
 export default function hero(){
     return(
-        <section className="hero mb:mt-4 mb-48">
+        <section className="hero mb:mt-4 mb-4">
             <div className="py-8 md:py-12">
                 <motion.h1 className="text-4xl font-semibold text-white"
                 initial={{ x: -300 }}

@@ -73,7 +73,7 @@ export default function Home() {
               width={220}
               height={220}
               alt="First Image"
-              className="w-8 h-8 sm:w-12 sm:h-12"
+              className="w-8 h-8 sm:w-8 sm:h-8"
             />
           </a>
           <a href="https://wa.me/94763903736">
@@ -82,10 +82,10 @@ export default function Home() {
               width={220}
               height={220}
               alt="Second Image"
-              className="w-8 h-8 sm:w-12 sm:h-12"
+              className="w-8 h-8 sm:w-8 sm:h-8"
             />
           </a>
-          <a className="text-4xl underline text-gray-500" href="tel:+94763903736">
+          <a className="text-3xl underline text-gray-500" href="tel:+94763903736">
             +94 76 390 3736
           </a>
       </div>   
