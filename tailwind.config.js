@@ -15,12 +15,17 @@ module.exports = {
       },
       animation: {
         shine: 'shine 5s infinite',
+        fadeInUp: 'fadeInUp 1s ease-out',
       },
       keyframes: {
         shine: {
           '0%': { transform: 'translateX(-100%)' },
           '50%': { transform: 'translateX(100%)' },
           '100%': { transform: 'translateX(-100%)' },
+        },
+        fadeInUp: {
+          '0%': { opacity: 0, transform: 'translateY(20px)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' },
         },
       },
     },
