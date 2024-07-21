@@ -8,7 +8,6 @@ import { useEffect, useState } from 'react';
 import { Element, scroller } from 'react-scroll';
 import Image from 'next/image';
 
-
 export default function Home() {
 
   const [isVisible, setIsVisible] = useState(false);
@@ -38,42 +37,43 @@ export default function Home() {
     <>
       <Hero />
       <HomeMenu />
-      <section className="text-center my-16" id="about">
-      <SectionHeaders 
+      <section className="text-center my-16 px-4" id="about">
+        <SectionHeaders 
           subHeader={'Our Story'}
           mainHeader={'About us'}
-      />
-      <Element name="scroll-target">
-      <motion.div
-       initial={{ x: -1000 }}
-       animate={{ x: 0 }}
-       transition={{ duration: 1, type: 'spring', stiffness: 120 }}
-       className="text-gray-500 max-w-md mx-auto mt-4 flex flex-col gap-4">
-        <p className="text-white">
-          At Bacement Cafe, we believe that dining is not just about food; it’s an experience. Nestled in the heart of Galle, our restaurant combines delicious flavors with warm hospitality. ❤️ Whether you’re celebrating a special occasion or simply enjoying a meal with loved ones, we invite you to savor every moment with us. 🎉👨‍👩‍👧‍👦
-        </p>
-        <p className="text-white">
-          🍽️ Founded in 2015, Bacement Cafe 🍽️ has been a culinary destination for locals and tourists alike. 🌟 Our journey began with a passion for Comfort Food. Over the years, we’ve evolved, but our commitment to quality ingredients, impeccable service, and a welcoming ambiance remains unwavering. 🍔✨
-        </p>
-        <p className="text-white">
-          🎯 Our mission is simple - to create memorable dining experiences 🎯. From our carefully curated menu 📜🍽️ to our thoughtfully designed space 🛋️✨, every detail reflects our dedication to excellence. We strive to be more than just a restaurant; we want to be a part of your cherished memories. ❤️🍴
-        </p>
-      </motion.div>
-      </Element>
+        />
+        <Element name="scroll-target">
+          <motion.div
+            initial={{ x: -1000 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 1, type: 'spring', stiffness: 120 }}
+            className="text-gray-500 max-w-4xl mx-auto mt-4 flex flex-col gap-4"
+          >
+            <p className="text-white">
+              At Bacement Cafe, we believe that dining is not just about food; it’s an experience. Nestled in the heart of Galle, our restaurant combines delicious flavors with warm hospitality. ❤️ Whether you’re celebrating a special occasion or simply enjoying a meal with loved ones, we invite you to savor every moment with us. 🎉👨‍👩‍👧‍👦
+            </p>
+            <p className="text-white">
+              🍽️ Founded in 2015, Bacement Cafe 🍽️ has been a culinary destination for locals and tourists alike. 🌟 Our journey began with a passion for Comfort Food. Over the years, we’ve evolved, but our commitment to quality ingredients, impeccable service, and a welcoming ambiance remains unwavering. 🍔✨
+            </p>
+            <p className="text-white">
+              🎯 Our mission is simple - to create memorable dining experiences 🎯. From our carefully curated menu 📜🍽️ to our thoughtfully designed space 🛋️✨, every detail reflects our dedication to excellence. We strive to be more than just a restaurant; we want to be a part of your cherished memories. ❤️🍴
+            </p>
+          </motion.div>
+        </Element>
       </section>
-      <section className="text-center my-8" id="contact">
+      <section className="text-center my-8 px-4" id="contact">
         <SectionHeaders 
           subHeader={'Don\'t hesitate'}
           mainHeader={'Contact Us'}
         />
-        <div className="mt-8 flex items-center space-x-4 justify-center">
+        <div className="mt-8 flex items-center justify-center space-x-4">
           <a href="https://web.facebook.com/HungryRestaurantGalle">
             <Image
               src="/R.png"
               width={220}
               height={220}
               alt="First Image"
-              className="w-8 h-8 sm:w-8 sm:h-8"
+              className="w-8 h-8 sm:w-10 sm:h-10"
             />
           </a>
           <a href="https://wa.me/94763903736">
@@ -82,15 +82,14 @@ export default function Home() {
               width={220}
               height={220}
               alt="Second Image"
-              className="w-8 h-8 sm:w-8 sm:h-8"
+              className="w-8 h-8 sm:w-10 sm:h-10"
             />
           </a>
-          <a className="text-3xl underline text-gray-500" href="tel:+94763903736">
+          <a className="text-lg sm:text-3xl underline text-gray-500" href="tel:+94763903736">
             +94 76 390 3736
           </a>
-      </div>   
+        </div>   
       </section>
     </>
   );
 }
-
