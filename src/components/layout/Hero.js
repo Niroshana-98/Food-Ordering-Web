@@ -42,7 +42,8 @@ export default function hero(){
                     food nourishes, delights, and connects us, turning moments into cherished memories 😊.
                 </p>
                 <div className="flex gap-4 text-sm">
-                    <button className="flex justify-center bg-primary uppercase items-center gap-2 text-white px-4 py-2 rounded-full hover:text-secondary border-primary">
+                    <button className="flex justify-center bg-primary uppercase items-center gap-2
+                     text-white px-4 py-2 rounded-full hover:text-secondary border-primary">
                         <Link href={'/menu'}>Order Now</Link>
                         <Right />
                     </button>
