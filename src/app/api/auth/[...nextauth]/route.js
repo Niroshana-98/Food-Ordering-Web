@@ -31,7 +31,6 @@ export const authOptions = {
           const user=await User.findOne({email});
           const passwordOk= user && bcrypt.compareSync(password, user.password);
 
-
           if(passwordOk){
             return user;
           }  
@@ -52,7 +51,5 @@ export async function isAdmin() {
   }
   return userInfo.admin;
 }
-
 const handler = NextAuth(authOptions);
-
 export { handler as GET, handler as POST }
