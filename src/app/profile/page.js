@@ -5,12 +5,6 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import UserTabs from "@/components/layout/UserTabs";
 import UserForm from "../../components/layout/UserForm";
-import InfoBox from "../../components/layout/InfoBox";
-import SuccessBox from "../../components/layout/SuccessBox";
-import Image from "next/image";
-import Link from "next/link";
-import EditableImage from "@/components/layout/EditableImage";
-
 
 export default function ProfilePage(){
     const session =useSession();

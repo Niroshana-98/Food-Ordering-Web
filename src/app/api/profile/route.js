@@ -22,7 +22,6 @@ export async function PUT(req){
     await User.updateOne(filter, {name, image});
     await UserInfo.findOneAndUpdate({email:user.email}, otherUserInfo, {upsert:true});
     
-    
     return Response.json(true);
 }
 
