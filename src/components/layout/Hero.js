@@ -23,7 +23,7 @@ const images = [
 
 export default function hero(){
     return(
-        <section className="hero mb:mt-4 mb-4">
+        <section className="hero mb:mt-4 -mb-16">
             <div className="py-8 md:py-12">
                 <motion.h1 className="text-4xl font-semibold text-white"
                 initial={{ x: -300 }}
@@ -43,7 +43,7 @@ export default function hero(){
                 </p>
                 <div className="flex gap-4 text-sm">
                     <button className="flex justify-center bg-primary uppercase items-center gap-2
-                     text-white px-4 py-2 rounded-full hover:text-secondary border-primary mr-8">
+                     text-white px-4 py-2 rounded-full hover:text-secondary border-primary md:mr-8">
                         <Link href={'/menu'}>Order Now</Link>
                         <Right />
                     </button>
