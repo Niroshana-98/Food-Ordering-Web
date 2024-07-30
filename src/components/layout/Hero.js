@@ -43,14 +43,14 @@ export default function hero(){
                 </p>
                 <div className="flex gap-4 text-sm">
                     <button className="flex justify-center bg-primary uppercase items-center gap-2
-                     text-white px-4 py-2 rounded-full hover:text-secondary border-primary">
+                     text-white px-4 py-2 rounded-full hover:text-secondary border-primary mr-8">
                         <Link href={'/menu'}>Order Now</Link>
                         <Right />
                     </button>
-                    <button className="flex items-center border-0 gap-2 py-2 text-white font-semibold hover:text-primary">
+                    {/*<button className="flex items-center border-0 gap-2 py-2 text-white font-semibold hover:text-primary">
                         Lern More
                         <Right />
-                    </button>
+                    </button>*/}
                 </div>
             </div>
             <div className="relative mt-4 rounded-xl overflow-hidden">
