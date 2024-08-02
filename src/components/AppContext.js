@@ -74,7 +74,7 @@ export function AppProvider({children}){
         setCartProducts(prevCartProducts => {
             const newCartProducts = [...prevCartProducts];
             if (index >= 0 && index < newCartProducts.length && newCartProducts[index]?.quantity !== undefined) {
-                if (newCartProducts[index].quantity < 10) {
+                if (newCartProducts[index].quantity > 1) {
                     newCartProducts[index].quantity -= 1;
                     saveCartProductsToLocalStorage(newCartProducts);
                 }
