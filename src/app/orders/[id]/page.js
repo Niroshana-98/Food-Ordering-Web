@@ -19,14 +19,18 @@ export default function OrderPage() {
     }
     if (id) {
       setLoadingOrder(true);
-      fetch('/api/orders?_id='+id).then(res => {
-        res.json().then(orderData => {
+      fetch('/api/orders?_id=' + id)
+        .then(res => res.json())
+        .then(orderData => {
           setOrder(orderData);
           setLoadingOrder(false);
+        })
+        .catch(error => {
+          console.error('Error fetching order:', error);
+          setLoadingOrder(false);
         });
-      })
     }
-  }, []);
+  }, [id, clearCart]);
 
   let subtotal = 0;
   if (order?.cartProducts) {
@@ -34,9 +38,10 @@ export default function OrderPage() {
       subtotal += cartProductPrice(product);
     }
   }
+  const isCompletedOrder = order?.status === 'completed';
 
   return (
-    <section className="max-w-2xl mx-auto mt-8">
+    <section className="max-w-l mx-auto mt-8">
       <div className="text-center">
         <SectionHeaders mainHeader="Your order" />
         <div className="mt-4 mb-8">
@@ -50,8 +55,8 @@ export default function OrderPage() {
       {order && (
         <div className="grid md:grid-cols-2 md:gap-16">
           <div className="text-white">
-            {order.cartProducts.map(product => (
-              <CartProduct key={product._id} product={product} />
+            {order.cartProducts.map((product, index) => (
+              <CartProduct key={product._id} product={product} index={index} disableButtons={isCompletedOrder} />
             ))}
             <div className="py-2 pl-16 flex justify-end items-center">
             <div className="text-gray-200 text-left">

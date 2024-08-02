@@ -1,11 +1,9 @@
 'use client';
 import {CartContext, cartProductPrice} from "@/components/AppContext";
-import Trash from "@/components/icons/Trash";
 import AddressInputs from "@/components/layout/AddressInputs";
 import SectionHeaders from "@/components/layout/SectionHeaders";
 import CartProduct from "@/components/menu/CartProduct";
 import {useProfile} from "@/components/UseProfile";
-import Image from "next/image";
 import {useContext, useEffect, useState} from "react";
 import toast from "react-hot-toast";
 
@@ -114,7 +112,7 @@ export default function CartPage() {
               addressProps={address}
               setAddressProp={handleAddressChange}
             />
-            <button type="submit" className="w-full mt-4 bg-primary text-white py-2 rounded">
+            <button type="submit" className="w-full mt-4 bg-primary text-white py-2 rounded-lg hover:text-black">
               Pay LKR {subtotal + 200}.00
             </button>
           </form>

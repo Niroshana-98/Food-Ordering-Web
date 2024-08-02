@@ -1,8 +1,13 @@
-import {cartProductPrice} from "@/components/AppContext";
+import { useContext } from "react";
+import {CartContext,cartProductPrice} from "@/components/AppContext";
 import Trash from "@/components/icons/Trash";
+import LeftA from "@/components/icons/increment";
+import RightA from "@/components/icons/decrement";
 import Image from "next/image";
 
-export default function CartProduct({product,index,onRemove}) {
+export default function CartProduct({product,index,onRemove,disableButtons = false}) {
+  const { incrementQuantity, decrementQuantity } = useContext(CartContext);
+
   return (
     <div className="flex items-center gap-4 border-b py-4">
       <div className="w-24">
@@ -25,15 +30,40 @@ export default function CartProduct({product,index,onRemove}) {
           </div>
         )}
       </div>
+      <div className="flex items-center gap-2">
+        <button 
+            onClick={() => decrementQuantity(index)} 
+            className="bg-gray-200 p-1 rounded-md"
+            disabled={disableButtons || product.quantity <= 1}
+        >
+            <RightA />
+        </button>
+        <input 
+            type="number" 
+            value={product.quantity} 
+            readOnly 
+            className="w-12 text-center border rounded-md text-black" 
+            min="1"
+            max="10"
+        />
+        <button 
+            onClick={() => incrementQuantity(index)} 
+            className="bg-gray-200 p-1 rounded-md"
+            disabled={disableButtons || product.quantity >= 10}
+        >
+            <LeftA />
+        </button>
+      </div>
       <div className="text-lg font-semibold">
-        LKR {cartProductPrice(product)}
+        LKR {cartProductPrice(product).toFixed(2)}
       </div>
       {!!onRemove && (
         <div className="ml-2 ">
           <button
             type="button"
             onClick={() => onRemove(index)}
-            className="p-2 text-white hover:text-red-700 border-none">
+            className="p-2 text-white hover:text-red-700 border-none rounded-lg"
+            disabled={disableButtons}>
             <Trash/>
           </button>
         </div>

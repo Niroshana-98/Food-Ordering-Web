@@ -42,7 +42,7 @@ export async function POST(req){
           const productName = cartProduct.name;
 
         stripeLineItems.push({
-            quantity:1,
+            quantity:cartProduct.quantity,
             price_data:{
                 currency:'LKR',
                 product_data:{

@@ -15,6 +15,7 @@ export function cartProductPrice(cartProduct){
             price += extra.price;
         }
     }
+    price *= (cartProduct.quantity || 1);
     return price;
 }
 
@@ -52,16 +53,39 @@ export function AppProvider({children}){
 
     function addToCart(product, size=null, extras=[]){
         setCartProducts(prevProducts => {
-            const cartProduct =  {...product, size, extras};
+            const cartProduct =  {...product, size, extras, quantity: 1};
             const newProducts = [...prevProducts, cartProduct];
             saveCartProductsToLocalStorage(newProducts);
             return newProducts;
         });
     }
+    function incrementQuantity(index) {
+        setCartProducts(prevCartProducts => {
+            const newCartProducts = [...prevCartProducts];
+            if (newCartProducts[index].quantity < 10) {
+                newCartProducts[index].quantity += 0.5;
+                saveCartProductsToLocalStorage(newCartProducts);
+            }
+            return newCartProducts;
+        });
+    }
+
+    function decrementQuantity(index) {
+        setCartProducts(prevCartProducts => {
+            const newCartProducts = [...prevCartProducts];
+            if (index >= 0 && index < newCartProducts.length && newCartProducts[index]?.quantity !== undefined) {
+                if (newCartProducts[index].quantity < 10) {
+                    newCartProducts[index].quantity += 0.5;
+                    saveCartProductsToLocalStorage(newCartProducts);
+                }
+            }
+            return newCartProducts;
+        });
+    }
     return(
         <SessionProvider>
             <CartContext.Provider value={{
-                cartProducts,setCartProducts,addToCart,removeCartProduct,clearCart,
+                cartProducts,setCartProducts,addToCart,removeCartProduct,clearCart,incrementQuantity, decrementQuantity
             }}>
                 {children}
             </CartContext.Provider>
