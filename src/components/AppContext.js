@@ -75,7 +75,7 @@ export function AppProvider({children}){
             const newCartProducts = [...prevCartProducts];
             if (index >= 0 && index < newCartProducts.length && newCartProducts[index]?.quantity !== undefined) {
                 if (newCartProducts[index].quantity < 10) {
-                    newCartProducts[index].quantity += 0.5;
+                    newCartProducts[index].quantity -= 0.5;
                     saveCartProductsToLocalStorage(newCartProducts);
                 }
             }

@@ -34,7 +34,7 @@ export default function CartProduct({product,index,onRemove,disableButtons = fal
         <button 
             onClick={() => decrementQuantity(index)} 
             className="bg-gray-200 p-1 rounded-md"
-            disabled={disableButtons || product.quantity <= 1}
+            
         >
             <RightA />
         </button>
@@ -49,7 +49,6 @@ export default function CartProduct({product,index,onRemove,disableButtons = fal
         <button 
             onClick={() => incrementQuantity(index)} 
             className="bg-gray-200 p-1 rounded-md"
-            disabled={disableButtons || product.quantity >= 10}
         >
             <LeftA />
         </button>
